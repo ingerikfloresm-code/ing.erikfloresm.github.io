@@ -13,6 +13,7 @@
       --secondary: #7e22ce;
       --text: #1f1230;
       --muted: #6f5b83;
+      --accent: #4c1d95;
     }
 
     * { box-sizing: border-box; }
@@ -26,7 +27,7 @@
     }
 
     .container {
-      width: min(1100px, 92vw);
+      width: min(1120px, 92vw);
       margin: 0 auto;
     }
 
@@ -57,12 +58,19 @@
     .subtitle {
       color: var(--muted);
       margin: 16px auto 0;
-      max-width: 760px;
+      max-width: 780px;
       font-size: 1.05rem;
     }
 
-    .cta {
+    .cta-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
       margin-top: 28px;
+    }
+
+    .cta {
       display: inline-block;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: #fff;
@@ -72,7 +80,13 @@
       text-decoration: none;
     }
 
-    section { padding: 18px 0 34px; }
+    .cta.alt {
+      background: #fff;
+      color: var(--accent);
+      border: 1px solid #dcc9f3;
+    }
+
+    section { padding: 16px 0 34px; }
 
     .grid {
       display: grid;
@@ -108,7 +122,67 @@
     .highlight {
       margin-top: 8px;
       font-weight: 600;
-      color: #4c1d95;
+      color: var(--accent);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+    }
+
+    .stat {
+      border: 1px solid #eadcf8;
+      border-radius: 14px;
+      padding: 16px;
+      background: #fcf7ff;
+    }
+
+    .stat strong {
+      font-size: 1.4rem;
+      color: var(--accent);
+      display: block;
+      line-height: 1.2;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .web-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+    }
+
+    .mock {
+      border-radius: 14px;
+      border: 1px solid #e8d9f6;
+      padding: 14px;
+      background: linear-gradient(145deg, #fff 30%, #f7efff 100%);
+    }
+
+    .mock header {
+      text-align: left;
+      padding: 0 0 8px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .mock .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .bubble {
+      background: #fff;
+      border: 1px solid #e7d6f8;
+      border-radius: 10px;
+      padding: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     footer {
@@ -119,14 +193,21 @@
       color: var(--muted);
       font-size: 0.92rem;
     }
+
+    @media (max-width: 860px) {
+      .web-layout { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <header class="container">
     <span class="pill">LIVE STREAMING · VIDEO CHAT · MONETIZACIÓN</span>
     <h1>Canelita conecta streamers con usuarios de todo el mundo</h1>
-    <p class="subtitle">Una plataforma de live streaming y video chat enfocada principalmente en mujeres streamers, diseñada para crear experiencias cercanas, seguras y rentables en tiempo real.</p>
-    <a class="cta" href="#funciones">Conocer funcionalidades</a>
+    <p class="subtitle">Plataforma enfocada principalmente en mujeres streamers para transmitir en vivo, ofrecer llamadas privadas y monetizar en tiempo real con monedas y regalos virtuales.</p>
+    <div class="cta-group">
+      <a class="cta" href="#funciones">Conocer funcionalidades</a>
+      <a class="cta alt" href="#web">Ver Canelita Web para PC</a>
+    </div>
   </header>
 
   <main class="container">
@@ -135,15 +216,19 @@
       <div class="grid" id="funciones">
         <article class="card">
           <h3>Transmisiones en vivo</h3>
-          <p>Las streamers pueden emitir contenido en directo e interactuar con su audiencia de forma inmediata a través de chat y dinámicas en tiempo real.</p>
+          <p>Las streamers emiten en directo con chat activo, reacciones, rankings y dinámicas para mantener alta la participación de la audiencia.</p>
         </article>
         <article class="card">
-          <h3>Llamadas privadas</h3>
-          <p>La plataforma permite sesiones 1 a 1 para una experiencia más personalizada entre streamer y usuario.</p>
+          <h3>Llamadas privadas 1 a 1</h3>
+          <p>Sesiones privadas seguras para experiencias personalizadas, con control de tiempo y cobro por minuto usando monedas.</p>
         </article>
         <article class="card">
-          <h3>Sistema de monedas y regalos</h3>
-          <p>Los usuarios apoyan a sus creadoras favoritas enviando regalos virtuales adquiridos con monedas dentro de la plataforma.</p>
+          <h3>Monedas y regalos</h3>
+          <p>Los usuarios compran paquetes de monedas y las convierten en regalos virtuales para apoyar a sus creadoras favoritas.</p>
+        </article>
+        <article class="card">
+          <h3>Seguridad y moderación</h3>
+          <p>Bloqueo de usuarios, filtros anti-abuso, reportes en un clic y revisión de contenido para proteger a la comunidad.</p>
         </article>
       </div>
     </section>
@@ -152,24 +237,65 @@
       <div class="card">
         <h2>Modelo de ingresos para streamers</h2>
         <ul>
-          <li>Monetización durante transmisiones en vivo mediante regalos virtuales.</li>
-          <li>Ganancias por interacciones premium en llamadas privadas.</li>
-          <li>Sistema escalable para premiar constancia, engagement y crecimiento de comunidad.</li>
+          <li>Ganancias por regalos enviados durante transmisiones públicas en vivo.</li>
+          <li>Monetización premium en llamadas privadas por tiempo de sesión.</li>
+          <li>Bonos por metas de actividad, fidelización y eventos temáticos.</li>
+          <li>Panel de retiro con historial de ingresos, comisiones y conversiones.</li>
         </ul>
-        <p class="highlight">Canelita está pensada para que cada interacción se transforme en una oportunidad real de ingreso.</p>
+        <p class="highlight">Cada interacción dentro de Canelita se diseña para convertirse en ingresos sostenibles para la streamer.</p>
       </div>
     </section>
 
     <section>
       <div class="card">
-        <h2>Canelita Web para PC</h2>
-        <p>Además de su experiencia móvil, Canelita cuenta con una versión para computador llamada <strong>Canelita Web</strong>, ideal para usuarios que prefieren una visualización más amplia, mejor gestión de chats y sesiones de video cómodas desde escritorio.</p>
+        <h2>Indicadores clave de negocio</h2>
+        <div class="stats">
+          <div class="stat">
+            <strong>+120</strong>
+            <span>países con usuarios potenciales conectados</span>
+          </div>
+          <div class="stat">
+            <strong>3 fuentes</strong>
+            <span>de monetización: live, privado y regalos</span>
+          </div>
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>actividad en salas para alcance global</span>
+          </div>
+          <div class="stat">
+            <strong>Escalable</strong>
+            <span>infraestructura preparada para crecer por regiones</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="web">
+      <div class="card web-layout">
+        <div>
+          <h2>Canelita Web para PC</h2>
+          <p>La versión de escritorio <strong>Canelita Web</strong> brinda una experiencia optimizada para computadoras: pantalla amplia, panel multi-chat, mejor administración de salas y mayor comodidad para videollamadas largas.</p>
+          <ul>
+            <li>Dashboard con métricas en tiempo real: monedas, regalos y usuarios activos.</li>
+            <li>Gestión simultánea de chats, mensajes privados y notificaciones.</li>
+            <li>Calidad de video superior y controles rápidos de audio/cámara.</li>
+          </ul>
+        </div>
+        <div class="mock" aria-label="Vista previa Canelita Web">
+          <header>Canelita Web · Vista de escritorio</header>
+          <div class="mini-grid">
+            <div class="bubble">Sala en vivo con ranking de regalos</div>
+            <div class="bubble">Chat global + mensajes privados</div>
+            <div class="bubble">Control de llamada 1 a 1</div>
+            <div class="bubble">Panel de ingresos y retiros</div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © 2026 Canelita · Plataforma de live streaming y video chat.
+    © 2026 Canelita · Plataforma de live streaming y video chat para conexión global.
   </footer>
 </body>
 </html>
